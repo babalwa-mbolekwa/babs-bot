@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;300;400;500;700;800;900&display=swap");
 
+@supports (-webkit-touch-callout: none) {
+  #app {
+    height: -webkit-fill-available;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -12,30 +18,27 @@ body {
 }
 
 #app {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100dvh;
   background: #343541;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+
+  overflow: hidden;
 }
 
 #chat_container {
   flex: 1;
   width: 100%;
-  height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   display: flex;
   flex-direction: column;
   gap: 10px;
 
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-
-  padding-bottom: 20px;
+  padding-bottom: 80px;
   scroll-behavior: smooth;
 }
 
@@ -122,14 +125,18 @@ body {
 
 form {
   width: 100%;
-  max-width: 1280px;
+  max-width: 850px;
   margin: 0 auto;
+
   padding: 10px;
   background: #40414F;
 
   display: flex;
-  flex-direction: row;
   gap: 10px;
+
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
 }
 
 textarea {
